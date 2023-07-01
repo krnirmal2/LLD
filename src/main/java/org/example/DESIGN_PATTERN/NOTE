@@ -1,0 +1,47 @@
+Singleton Pattern: Used when there should be only one instance of a class throughout the application.
+
+Factory Pattern: Used for creating objects without specifying their concrete classes. It promotes loose coupling and flexibility in object creation.
+
+Observer Pattern: Used when there is a one-to-many relationship between objects, allowing them to be notified and updated when the state of one object changes.
+
+Strategy Pattern: Used when you want to encapsulate different algorithms or behaviors and make them interchangeable at runtime.
+
+Adapter Pattern: Used to convert the interface of a class into another interface that clients expect. It allows incompatible classes to work together by providing a common interface.
+
+Decorator Pattern: Used to dynamically add new functionality to an existing object without modifying its structure. It provides a flexible alternative to subclassing.
+
+Template Method Pattern: Used to define the skeleton of an algorithm in a base class while allowing subclasses to override specific steps of the algorithm.
+
+Command Pattern: Used to encapsulate a request as an object, allowing the parameterization of clients with different requests, queue or log requests, and support undoable operations
+
+
+
+Creational Patterns:
+
+Singleton Pattern
+Factory Pattern
+Abstract Factory Pattern
+Builder Pattern
+Prototype Pattern
+Structural Patterns:
+
+Adapter Pattern
+Decorator Pattern
+Proxy Pattern
+Bridge Pattern
+Composite Pattern
+Flyweight Pattern
+Facade Pattern
+Behavioral Patterns:
+
+Observer Pattern
+Strategy Pattern
+Command Pattern
+Template Method Pattern
+Iterator Pattern
+State Pattern
+Visitor Pattern
+Chain of Responsibility Pattern
+Interpreter Pattern
+Mediator Pattern
+Memento Pattern

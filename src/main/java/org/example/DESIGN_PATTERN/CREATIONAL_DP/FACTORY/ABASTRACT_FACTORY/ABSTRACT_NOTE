@@ -1,0 +1,10 @@
+1. PROVIDES AN intercace for creating famillies of related or depenedent objects without specifying their concrete classes
+2.  Allows to creates objects that are designed to work together and ensure that the created objects are compatible with each other
+3. Also know as the kit pattern
+
+
+Step 1: Define the Abstract Factory interface:
+Step 2: Implement concrete factories for different product families:
+Step 3: Define the ProductA and ProductB interfaces:
+Step 4: Implement concrete ProductA and ProductB classes for each product family:
+Step 5: Usage of the Abstract Factory pattern:

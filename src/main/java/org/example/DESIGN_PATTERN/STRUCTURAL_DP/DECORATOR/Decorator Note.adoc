@@ -1,0 +1,99 @@
+A real-life example of the Decorator design pattern can be seen in a coffee shop where customers can order various types of coffee with different toppings or flavors.
+
+In this example, the base component is the "Coffee" interface, which represents the common functionality of all types of coffee.
+
+```java
+public interface Coffee {
+    String getDescription();
+    double getCost();
+}
+```
+
+The concrete component is the actual coffee implementation, such as "Espresso" or "Latte."
+
+```java
+public class Espresso implements Coffee {
+    @Override
+    public String getDescription() {
+        return "Espresso";
+    }
+
+    @Override
+    public double getCost() {
+        return 1.99;
+    }
+}
+```
+
+Now, let's say customers can add additional flavors or toppings to their coffee. We can use decorators to dynamically add these extras to the coffee.
+
+```java
+public abstract class CoffeeDecorator implements Coffee {
+    protected Coffee coffee;
+
+    public CoffeeDecorator(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    @Override
+    public String getDescription() {
+        return coffee.getDescription();
+    }
+
+    @Override
+    public double getCost() {
+        return coffee.getCost();
+    }
+}
+```
+
+Here's an example of a concrete decorator, representing an additional flavor like "Vanilla."
+
+```java
+public class VanillaDecorator extends CoffeeDecorator {
+    public VanillaDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", Vanilla";
+    }
+
+    @Override
+    public double getCost() {
+        return super.getCost() + 0.50;
+    }
+}
+```
+
+In the client code, customers can order different combinations of coffee and decorators.
+
+```java
+public class Client {
+    public static void main(String[] args) {
+        // Order a plain espresso
+        Coffee espresso = new Espresso();
+        System.out.println("Order: " + espresso.getDescription());
+        System.out.println("Cost: $" + espresso.getCost());
+
+        // Order a latte with vanilla flavor
+        Coffee latte = new Latte();
+        latte = new VanillaDecorator(latte);
+        System.out.println("Order: " + latte.getDescription());
+        System.out.println("Cost: $" + latte.getCost());
+    }
+}
+```
+
+In this example, the `Coffee` interface defines the methods `getDescription()` and `getCost()` for retrieving the description and cost of a coffee.
+
+The `Espresso` class implements the `Coffee` interface and represents a concrete coffee type.
+
+The `CoffeeDecorator` class is the abstract decorator that extends the `Coffee` interface. It has a reference to the decorated coffee object and provides default implementations for the `getDescription()` and `getCost()` methods by delegating the calls to the decorated object.
+
+The `VanillaDecorator` class is a concrete decorator that extends the `CoffeeDecorator`. It adds the behavior of vanilla flavor to the coffee by modifying the `getDescription()` and `getCost()` methods.
+
+In the client code, an espresso is ordered and displayed. Then, a latte is ordered and decorated with the `VanillaDecorator`, resulting in a coffee with vanilla flavor.
+
+The Decorator pattern allows us to add new features or behaviors to objects dynamically at runtime, without modifying their underlying structure. It provides a flexible and reusable way to extend the functionality of objects in a transparent manner.
