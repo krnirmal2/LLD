@@ -1,0 +1,67 @@
+*A* real-life example of the Adapter design pattern can be seen in the usage of electrical adapters when traveling internationally. When you travel to a different country, you may encounter different types of electrical outlets and plugs that are incompatible with the plugs of your electronic devices. In such cases, you can use an electrical adapter to bridge the gap and enable your devices to connect to the local power supply.
+
+Here's how the Adapter pattern can be applied in this scenario:
+
+1. Define the target interface: Create an interface that represents the target or desired interface that your electronic devices can connect to.
+
+```java
+public interface PowerOutlet {
+    void provideElectricity();
+}
+```
+
+2. Implement the Adaptee: Create a class that represents the incompatible interface or object that you need to adapt.
+
+```java
+public class ForeignPowerOutlet {
+    public void giveElectricity() {
+        System.out.println("Foreign power outlet is providing electricity.");
+    }
+}
+```
+
+3. Create the Adapter: Implement an adapter class that implements the target interface and wraps the incompatible object. This adapter class translates the calls from the target interface to the appropriate calls on the adaptee.
+
+```java
+public class PowerOutletAdapter implements PowerOutlet {
+    private ForeignPowerOutlet foreignPowerOutlet;
+
+    public PowerOutletAdapter(ForeignPowerOutlet foreignPowerOutlet) {
+        this.foreignPowerOutlet = foreignPowerOutlet;
+    }
+
+    @Override
+    public void provideElectricity() {
+        foreignPowerOutlet.giveElectricity();
+    }
+}
+```
+
+4. Use the Adapter: In the client code, create an instance of the adapter and use it to connect your electronic devices to the power outlet.
+
+```java
+public class Client {
+    public static void main(String[] args) {
+        // Incompatible power outlet
+        ForeignPowerOutlet foreignPowerOutlet = new ForeignPowerOutlet();
+
+        // Create the adapter
+        PowerOutletAdapter adapter = new PowerOutletAdapter(foreignPowerOutlet);
+
+        // Connect electronic devices to the power outlet using the adapter
+        connectToDevice(adapter);
+    }
+
+    public static void connectToDevice(PowerOutlet powerOutlet) {
+        powerOutlet.provideElectricity();
+    }
+}
+```
+
+In this example, the `PowerOutlet` interface represents the desired interface that your electronic devices can connect to. The `ForeignPowerOutlet` class represents the incompatible power outlet that exists in a foreign country.
+
+The `PowerOutletAdapter` class acts as the adapter. It implements the `PowerOutlet` interface and wraps the `ForeignPowerOutlet` object. The `provideElectricity` method in the adapter calls the appropriate method on the `ForeignPowerOutlet` object to provide electricity.
+
+In the client code, the incompatible power outlet is created as the `ForeignPowerOutlet` object. The adapter is then created, passing the `ForeignPowerOutlet` object as a parameter. Finally, the electronic devices are connected to the power outlet using the adapter by calling the `provideElectricity` method on the `PowerOutlet` interface.
+
+The Adapter pattern allows you to use incompatible classes or interfaces together by providing a wrapper or adapter that translates the calls from the desired interface to the underlying implementation. It is commonly used when integrating existing or third-party code into an application or when working with different versions or types of interfaces.

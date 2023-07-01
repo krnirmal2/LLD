@@ -1,0 +1,8 @@
+1. USE CASE
+   when we have multiple algo or strategies that can be interchangeable based on different scenaraios
+
+ 2. why
+    it allow you to encapsulate each stratgy into its own class and select the appropriate strategy at runtime
+
+ PRACTICAL USE
+   to sort a set of data when we use differeent sorting algorithm on that time
